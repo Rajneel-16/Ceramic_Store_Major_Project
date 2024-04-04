@@ -1,0 +1,63 @@
+body {
+    background-color: rgb(172, 234, 172);
+    font-family: Arial, sans-serif;
+    background-image: url("");
+}
+
+.welcome {
+    font-style: italic;
+    font-size: 24px;
+    color: rgb(57, 19, 93);
+    font-weight: bold;
+    text-align: center; 
+    margin: 20px 0; 
+}
+
+.login {
+    margin: 0 auto; 
+    max-width: 400px; 
+    border: 6px dashed rgb(57, 19, 93);
+    border-radius: 15px;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    color:  rgb(57, 19, 93);
+    font-weight: bold;
+}
+
+.login1, .login2 {
+    border-radius: 20%;
+    height: 80px;
+    width: 100px; 
+    margin-bottom: 15px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.login input {
+    border: 3px solid orange;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center; 
+}
+
+.submit {
+    background-color: rgb(205, 166, 242);
+    color: aliceblue;
+    font-size: 30px;
+    border: none;
+    padding: 0 60px 0 60px;
+    border-radius: 100px;
+    cursor: pointer;
+
+}
+.submit:hover{
+    background-color: rgb(191, 132, 245);
+    opacity: .75;
+}

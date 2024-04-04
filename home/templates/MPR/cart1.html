@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+  {% block link %} <link rel="stylesheet" href="{% static "./css/cart.css" %}">{% endblock link %}
+  {% block tailwind_link %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block title %}<title>CART</title>{% endblock title %}
+  {% endblock tailwind_link %}
+    {% block contant %}
+      <h1 class="text-[25px]">Cart Page</h1>
+      <h2 class="text-[25px]">Shopping Cart</h2>
+      <section>
+         
+            <div id="cart-items" class="tp">
+                {% if empty %}
+                    <div class="w-[100%] h-[80%] flex " >
+                        <img src="{% static "./image/empty.avif" %}" class="w-1/2 h-1/2">
+                        <p class="pl-[80px] pt-[115px] text-[25px] font-semibold">CART IS EMPTY NOW</p>
+                    </div>  
+                {% else %}
+                    {% for item in items %}
+                        <div class="cart-item">
+                            <a href="{% url "home:detaile"%}?product={{item.id}}">
+                                <img src="{{item.image.url}}" >
+                            </a>
+                            <div >
+                            <p>{{item.name}}</p>
+                            <p>Rs:-{{item.price}}</p>
+                    
+                            </div>
+                            <a href="{% url "home:delete" id=item.id %}">
+                                <button>
+                                    Delete
+                                </button>
+                            </a>
+                        </div>
+                    {% endfor %}     
+                {% endif %}   
+            </div>
+      
+      </section>
+    {% endblock contant %}

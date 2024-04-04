@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static "./css/buy.css" %}">
+{% endblock link %}
+{% block title %}
+<title>PURCHASE DETAILE</title>
+{% endblock title %}
+
+
+{% block contant %}
+<div class="wrap">
+    <table>
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Help us know more about your tentative requirements!</h1>
+            <tr>
+                <td>
+                    <label>Username</label> <br>
+                    <p name="user" class="txt">{{username|title}}</p>
+                </td>
+                <td>
+                    <label>Product Name</label> <br>
+                    <p name="name" class="txt">{{product.name|title}}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Length of tile (in feet):</label> <br>
+                    <input type="number" id="num1" class="txt" oninput="calculateArea()" name="length">
+                </td>
+                <td>
+                    <label>Breadth of tile (in feet):</label> <br>
+                    <input type="number" id="num2" class="txt" oninput="calculateArea()" name="breadth">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" id="areabox">
+                    <label>Area of a tile:</label> <br>
+                    <span id="result" class="txt"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Number of bands (tentative):</label> <br>
+                    <input type="text" name="bands" class="txt">
+                </td>
+                <td>
+                    <label>Number of Light Tiles:</label> <br>
+                    <input type="text" name="light" class="txt">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Number of Highlighters:</label> <br>
+                    <input type="text" class="txt" name="Highlighters">
+                </td>
+                <td>
+                    <label>Number of Dark Tiles:</label> <br>
+                    <input type="text" class="txt" name="dark">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label>Enter your address</label> <br>
+                    <textarea name="address" class="txtarea"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Mode of Payment: <br>
+                    <label><input type="radio" class="sel">Cash On Delivery</label>
+                </td>
+                <td>
+                    Select City: <br>
+                    <label><input type="radio" class="sel">Mumbai</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    
+                        <button class="btn">Submit</button>
+                    
+                    
+                </td>
+            </tr>
+        </form>
+    </table>
+</div>
+
+<script>
+    function calculateArea() {
+        // Get the values of the two numbers entered by the user
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+
+        // Check if the values are valid numbers
+        if (!isNaN(num1) && !isNaN(num2)) {
+            // Calculate the multiplication
+            var result = num1 * num2;
+
+            // Display the result
+            document.getElementById("result").textContent = result + " square feet";
+        } else {
+            document.getElementById("result").textContent = ""; // Clear the result if inputs are not valid
+        }
+    }
+</script>
+
+{% endblock contant %}

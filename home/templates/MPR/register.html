@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Register</title>{% endblock title %}
+{% block link %} <link rel="stylesheet" href="../../static/css/reg_page.css">{% endblock link %}
+{% block contant %}
+    <div class="container">
+        <div class="form-box">
+            <form action="" method="POST">
+                {% if messages %}
+                    {{message.tags}}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% csrf_token %}
+                <h2>Register</h2>
+                <p id="result"></p>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="comfirm_password" placeholder="Confirm Password"  required>
+                </div>
+                <div class="button">
+                    <input type="submit" class="btn" onclick="validation()" value="Register">
+                </div>
+                <div class="register_link">
+                    <p>Have an account?
+                    <a href={% url "home:login" %}>Login Here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock contant %}

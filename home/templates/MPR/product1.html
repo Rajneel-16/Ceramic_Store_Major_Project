@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  <title>DISPLAY</title>
+{% endblock title %}
+{% block link %} <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+  crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock link %}
+{% block tailwind_link %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+{% endblock tailwind_link %}
+
+{% block contant %}
+  <div class="flex justify-between">
+    <div class="flex w-1/5 justify-center items-center max-lg:w-1/2 ">
+        <a href="home:home">
+          <img class="flex justify-center shrink-0 h-[110px] " src="{% static "image/img27.jpg" %}">
+        </a>
+    </div>
+    <div class="flex w-3/5 justify-end font-medium max-lg:hidden ">
+        <a href="#" class=" p-3 m-3 hover:underline">PRODUCS</a>
+        <a href="#" class=" p-3 m-3 hover:underline">E-CATALOGUE </a>
+        <a href="#" class=" p-3 m-3 hover:underline">MORE</a>
+
+    </div>
+    <div class="flex justify-end items-center w-1/5 max-lg:w-1/2 ">
+        <div>
+          {% if request.user.is_authenticated %}
+          <a class="font-bold hover:underline" href="{% url 'home:logout' %}">
+              LOG OUT
+          </a>
+          {% else %}
+              <a class="font-bold hover:underline" href="{% url 'home:login' %}">
+                  LOG IN
+              </a>    
+          {% endif %}
+        </div>
+        <div>
+              <a class="p-4 cursor-pointer hover:underline font-bold" href="{% url "home:cartpage" %}">
+                  CART
+              </a>
+        </div>
+
+    </div>
+  </div>
+  <!-- hero1 -->
+  <section>
+    <div class="px-4 py-5 my-5 text-center ">
+      <h1 class="display-5 fw-bold text-body-emphasis">{{info.name|title}}</h1>
+      <div class="">
+        <p class="lead mb-2 font-350">
+          {{info.about}}
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container bg-primary">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav " id="myTab" role="tablist">
+        <li class="nav-item "><a href="{% url "home:filter" %}?categoryId=1" class="nav-link text-light btn-primary:hover focus:bg-blue-700" aria-current="page">KITCHEN WALL TILES</a></li>
+        <li class="nav-item "><a href="{% url "home:filter" %}?categoryId=2" class="nav-link text-light btn-primary:hover focus:bg-blue-700">BEDROOM WALL TILES</a></li>
+        <li class="nav-item "><a href="{% url "home:filter" %}?categoryId=3" class="nav-link text-light btn-primary:hover focus:bg-blue-700">LIVING ROOM WALL TILES</a></li>
+        <li class="nav-item "><a href="{% url "home:filter" %}?categoryId=5" class="nav-link text-light btn-primary:hover focus:bg-blue-700">OUTDOOR WALL TILES</a></li>
+        <li class="nav-item "><a href="{% url "home:filter" %}?categoryId=6" class="nav-link text-light btn-primary:hover focus:bg-blue-700">COMMEERCIAL SPACES WALL TILES</a></li>
+      </ul>
+    </header>
+  </div>
+
+  <!-- container -->
+  <section class="container">
+    <div class="d-flex flex-shrink-0 p-3">
+      <!-- slidebar -->
+      <div
+        class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+        style="width: 280px"
+      >
+        <hr>
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+          >
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-5">Search By Category</span>
+          </a>
+          <hr />
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold" aria-current="page">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#home"></use>
+                </svg>
+                Ceramic Tiles
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#speedometer2"></use>
+                </svg>
+                Polished Vitrified Tiles
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#table"></use>
+                </svg>
+                Eternity - Glazed Vitrified Tiles
+              </a>
+            </li>
+            <hr>
+            <a
+            href="/"
+            class="d-flex align-items-center mb-3 mt-3 mb-md-0 me-md-auto text-white text-decoration-none"
+          >
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-5">Search By Size</span>
+          </a>
+          <li>
+            <a href="{% url "home:sidebar" %}?size=24x24" class="nav-link text-white focus:bg-blue-600 font-bold">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              24 x 24 inch
+            </a>
+          </li>
+          <li>
+            <a href="{% url "home:sidebar" %}?size=18x12" class="nav-link text-white focus:bg-blue-600 font-bold">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              18 x 12 inch
+            </a>
+          </li>
+         
+          <hr>
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 mt-3 mb-md-0 me-md-auto text-white text-decoration-none"
+          >
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-5">Search By Series</span>
+          </a>
+          <hr>
+          <li>
+            <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              80x160 cm - Gres Tough
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              30x60 cm - Designer
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white focus:bg-blue-600 font-bold">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              30x45 cm - Digital
+            </a>
+          </li>
+        </hr>
+        
+      </div>
+      <!-- main content -->
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 row-gap-xl-1 column-gap-3 d-flex justify-center align-items-center">
+            {% for item in tiles %}
+              <div class="card" style="width: 20rem;">
+                <a href="{% url "home:detaile"%}?product={{item.id}}">
+                  <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                </a>
+                <div class="flex-col">
+                  <div class="flex-col">
+                    <div>
+                      <h6 class="font-580 pt-2 text-[20px]">PRODUCT NAME:- {{item.name|title}}</h6>
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-indian-rupee-sign"></i>
+                      <h6 class="flex items-center justify-center font-550 pt-2 text-[20px]">
+                         Rs {{item.price}}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-center bg-blue-500 py-2 rounded text-white hover:p-0">
+                    <a href="{% url "home:add" id=item.id %}" target="blank">
+                        <button> 
+                            ADD TO CART
+                        </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </dir>
+        </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <div class="flex flex-col h-[450px]">
+    <div class="flex flex-col md:flex-row justify-between h-[400px] max-md:flex-col mt-5">
+        <div class="w-full md:w-1/5 flex justify-center items-center md:items-start">
+          <img class="flex justify-center shrink-0 h-[110px] " src="{% static "image/img27.jpg" %}">
+        </div>
+        <div class="w-full md:w-1/5 flex p-5 flex-col">
+            <div class="w-[100%] h-[50%]">
+                <div>
+                    CONTACT
+                    <h1 class="font-bold pt-3">
+                        1234567890
+                    </h1>
+                </div>
+            </div>
+            <div>
+                CONNECT
+                <div class="flex w-[100%] mr-2">
+                    <div class="w-1/5 mr-2 mt-3">
+                        <a class="" href="#">
+                            <img class=""
+                                src="https://e1.pxfuel.com/desktop-wallpaper/516/561/desktop-wallpaper-instagram-logo-png-instagram-icon.jpg">
+                        </a>
+                    </div>
+                    <div class="w-1/5 mr-2 mt-3">
+                        <a class="" href="#">
+                            <img class=""
+                                src="https://www.freepnglogos.com/uploads/facebook-icons/facebook-icon-transparent-background-3.png">
+                        </a>
+                    </div>
+                    <div class="w-1/5 mr-2 mt-3">
+                        <a class="" href="#">
+                            <img class=""
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:w-1/5 flex flex-col">
+            <div class="pt-5 md:h-[50%]">
+                EMAIL
+                <h1 class="mt-2 font-semibold">
+                    ceramicstore.0619@gmail.com
+                </h1>
+            </div>
+            <div class="w-48">
+                DOWNLOAD
+                <a href="#">
+                    <img
+                        src="https://thumbs.dreamstime.com/z/download-app-store-get-google-play-button-icons-vector-illustration-october-201439380.jpg?w=768">
+                </a>
+            </div>
+        </div>
+        <div class="w-full md:w-1/5 flex flex-col pt-4">
+            <div class="pt-4 font-bold">
+                QUICK LINKS
+            </div>
+            <div class="flex flex-col p-2">
+                <a class="hover:underline hover:text-blue-500 font-semibold mt-3" href="{% url "home:filter" %}?categoryId=10">
+                    PREMIUM FLOOR
+                </a>
+                <a class="hover:underline hover:text-blue-500 font-semibold mt-3" href="{% url "home:filter" %}?categoryId=11">
+                    PREMIUM WALL
+                </a>
+                <a class="hover:underline hover:text-blue-500 font-semibold mt-3" href="{% url "home:filter" %}?categoryId=12">
+                    PREMIUM ELEVATION
+                </a>
+                <a class="hover:underline hover:text-blue-500 font-semibold mt-3" href="{% url "home:filter" %}?categoryId=13">
+                    VITRIFIED TILES
+                </a>
+                <a class="hover:underline hover:text-blue-500 font-semibold mt-3" href="{% url "home:filter" %}?categoryId=14">
+                    GVT TILES
+                </a>
+                <a class="hover:underline hover:text-blue-500 font-semibold  mt-3" href="{% url "home:login" %}">
+                    LOGIN
+                </a>
+            </div>
+        </div>
+        <div class="w-full md:w-1/5 flex flex-col pt-5">
+            ABOUT US
+            <div class="flex items-center-center pt-4 font-semibold">
+                WE SELL ALL TYPES OF TILES ALL OVER MUMBAI WHERE YOU CAN BUY TILES OF ALL KINDS, INCLUDING PREMIUM
+                RANGE. YOU CAN SEE ALL KINDS OF VARIETIES OF TILES AVAILABLE IN MUMBAI.
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center md:hidden">
+        Products
+        Bathroom Tiles | Kitchen Tiles | Wall Tiles | Floor Tiles | Vitrified Tiles | Ceramic Tiles | Polished
+        Vitrified Tiles | Eternity - Glazed Vitrified Tiles
+    </div>
+</div>
+
+  <!-- script -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+
+{% endblock contant %}
